@@ -35,7 +35,7 @@
     firefox tdesktop dropbox
 
     # Toolchains
-    stack bazel protobuf
+    stack bazel protobuf elmPackages.elm
   ];
 
   # Program configuration
