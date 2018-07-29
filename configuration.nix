@@ -28,7 +28,7 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    wget vim git vscode stack bazel
+    wget vim git vscode stack bazel protobuf
     firefox tdesktop dropbox
   ];
 
