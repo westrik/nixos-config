@@ -109,6 +109,7 @@
 
     # backups
     borgbackup
+    rclone
 
     # utilities
     curl
@@ -171,6 +172,11 @@
   #   gpg-connect-agent /bye
   #   export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
   # '';
+
+  environment.shellInit = ''
+    eval "$(direnv hook bash)"
+  '';
+
   programs.ssh = {
     startAgent = false;
     extraConfig = ''
@@ -279,6 +285,11 @@
     subGidRanges = [{ startGid = 100000; count = 65536; }];
   };
   users.users.betty = { isNormalUser = true; };
+
+  # allow remote builds
+  nix.extraOptions = ''
+    trusted-users = root matt
+  '';
 
   # grant access to media files
   users.users.roon-server = { extraGroups = [ "users" ]; };
